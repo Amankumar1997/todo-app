@@ -1,8 +1,28 @@
 const express=require('express');
+const { set } = require('express/lib/application');
+// require path
+const path =require('path');
+const port=4000;
+
 const app=express();
 
-const port=8000;
 
+//view engine setup
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'));
+// app.set('views', path.join(__dirname, 'views'))
+
+app.get('/',function(req,res){
+
+    return res.render('home',{
+        title:"todo"
+    }
+    );
+});
+
+
+
+// ejs setup
 
 
 
