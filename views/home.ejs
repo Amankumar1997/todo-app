@@ -4,15 +4,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=title%></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+   <link rel="stylesheet" href="/css/home.css">
+  
 </head>
 <body>
-    <h3>Todo App</h3>
+    <h3 id="page-heading" >Todo App</h3>
+    <div id="contact-list-container ">
+
+<!-- user input form -->
+<form action="create-contact" method="post" id="task-input">
+  <label for="description">TASK</label><br />
+  <input id="description" type="text" name="desc" placeholder="add whatever you want" style="flex: 100%;" required>
+   
+  <div class="horizontal-divider"></div>
+  
+  <!-- seleect category -->
+  <label for="category">CATEGORY</label><br />
+   <select name="category" id="category" required>
+    <option value="" selected>Choose a category</option>
+    <option value="personal">Personal</option>
+    <option value="work">Work</option>
+    <option value="school">School</option>
+    <option value="cleaning">Cleaning</option>
+    <option value="other">Other</option>
+    </select>
+    <div class="horizontal-divider"></div>
+
+    <!-- enteer the due date of the task -->
+    <label for="date">DUE DATE</label><br />
+    <input type="date" name="date" id="date" required>
+    <div class="horizontal-divider"></div>
+  <button type="submit" id="add-btn">Add</button>
+   </form>
+
+
+
+
     <ul>
-    <% for (var i =1; i <=10;  i++ ) { %>
-        <br/> <li><%= i %> </li> 
+    <% for (let i of todolist ) { %>
+       <li id="contact">
+          <div class="details">
+        <p>   <%= i.desc %> </p>
+        <p>   <%= i.category %> </p>
+        <p>   <%= i.date %> </p>
+      </div>
+      <div class="delete-btn">
+  <!-- in <a> tag we access path and  of deleted and <%=i.phone%> this what i want delete -->
+   <a href="/delete-contact/?id=<%=i._id%>">
+      <i class="fas fa-trash-alt"></i>
+    </a>
+
+      </div>
+        </li> 
      
         <% } %>
 </ul>
+
+
+</div>
 
 </body>
 </html>
